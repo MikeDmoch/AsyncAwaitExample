@@ -11,8 +11,9 @@ namespace AsyncAwaitExamples
 
             var smazenieBekonu = SmazBekonAsync(5);
             var przygotowanieJajek = SmazJajeczniceAsync(3);
+            var parzenieHerbaty = ZaparzHerbate();
 
-            await Task.WhenAll(smazenieBekonu, przygotowanieJajek);
+            await Task.WhenAll(smazenieBekonu, przygotowanieJajek, parzenieHerbaty);
 
             Console.WriteLine("Śniadanie gotowe! Smacznego!");
         }
@@ -31,6 +32,15 @@ namespace AsyncAwaitExamples
             Console.WriteLine("Mieszanie jajek...");
             await Task.Delay(2000);
             Console.WriteLine("Jajecznica jest gotowa!");
+        }
+
+        static async Task ZaparzHerbate()
+        {
+            Console.WriteLine("Gotowanie wody...");
+            await Task.Delay(4000);
+            Console.WriteLine("Zalewanie wodą i parzenie...");
+            await Task.Delay(1000);
+            Console.WriteLine("Herbata gotowa!");
         }
     }
 }
